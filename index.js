@@ -6,7 +6,7 @@ app.all('/', (req, res) => {
     res.send('Yo!')
 })
 
-app.post("/decrypt", function (req, res) {
+app.all("/decrypt", function (req, res) {
     var payload = req.body;
     var object = payload.object;
     var keys = payload.keys;
