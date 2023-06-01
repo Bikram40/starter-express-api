@@ -5,8 +5,6 @@ module.exports = decrypt;
 
 // https://tools.ietf.org/html/draft-ietf-webpush-encryption-03
 function decrypt(object, keys) {
-    console.log(object);
-    console.log(keys);
   const cryptoKey = object.appData.find(item => item.key === 'crypto-key');
   if (!cryptoKey) throw new Error('crypto-key is missing');
   const salt = object.appData.find(item => item.key === 'encryption');

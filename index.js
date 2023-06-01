@@ -4,9 +4,9 @@ const app = express()
 app.all('/', (req, res) => {
     console.log("Just got a request!")
     res.send('Yo!')
-})
-
-app.all("/decrypt", function (req, res) {
+});
+app.use(express.json());
+app.post("/decrypt", function (req, res) {
     var payload = req.body;
     var object = payload.object;
     var keys = payload.keys;
@@ -27,7 +27,7 @@ app.all("/decrypt", function (req, res) {
                 console.warn(
                     'Message dropped as it could not be decrypted: ' + error.message
                 );
-            
+
                 return;
             default: {
                 throw error;
